@@ -8,7 +8,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y git
 
 # Clone the GitHub repository
-RUN git clone RUN git clone <repository_url> /tmp/repo /tmp/repo
+RUN git clone https://github.com/KarthiR98/analog-clock.git /tmp/repo /tmp/repo
 
 # Copy the desired files or folders from the repository to the container
 COPY /tmp/repo/path/to/folder1 /app
