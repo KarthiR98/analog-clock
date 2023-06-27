@@ -4,16 +4,21 @@ FROM node:14
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy the package.json and package-lock.json files to the container
-COPY package*.json ./
+# Install Git
+RUN apt-get update && apt-get install -y git
+
+# Clone the GitHub repository
+RUN git clone RUN git clone <repository_url> /tmp/repo /tmp/repo
+
+# Copy the desired files or folders from the repository to the container
+COPY /tmp/repo/path/to/folder1 /app
+COPY /tmp/repo/path/to/folder2 /app
+COPY /tmp/repo/path/to/file1.js /app
+COPY /tmp/repo/path/to/file2.html /app
 
 # Install the dependencies
+COPY package*.json ./
 RUN npm install
-
-# Copy the JS, CSS, and HTML files to the container
-COPY index.js .
-COPY style.css .
-COPY index.html .
 
 # Expose the port on which the server will listen
 EXPOSE 8080
